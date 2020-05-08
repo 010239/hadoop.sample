@@ -1,4 +1,4 @@
-package kkk.hadoop.sample;
+package kkk.hadoop.sample.mpv2;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -14,7 +14,11 @@ import java.io.IOException;
 import java.util.StringTokenizer;
 
 /**
- *     hadoop jar WordCount.jar kkk.hadoop.sample.WordCount /input/wordcount/file1 /output/
+ *
+ *     https://segmentfault.com/a/1190000020388581
+ *     https://www.cnblogs.com/kocdaniel/p/11637888.html
+ *
+ *     hadoop jar WordCount.jar kkk.hadoop.sample.mpv2.WordCount /input/wordcount/file1 /output/
  */
 public class WordCount {
     /**
@@ -27,6 +31,7 @@ public class WordCount {
         @Override
         protected void map(Object key, Text value, Context context) throws IOException, InterruptedException {
             StringTokenizer itr = new StringTokenizer(value.toString());
+
             while (itr.hasMoreTokens()) {
                 context.write(new Text(itr.nextToken()), new IntWritable(1));
             }
